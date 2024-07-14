@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ThemeToggle from "@/components/ThemeToggle";
-import NavItems from "@/components/NavItems";
+import ThemeToggle from "@/components/navbar/ThemeToggle";
+import NavItems from "@/components/navbar/NavItems";
 
 const Navbar: React.FC = () => {
   const [containerPosition, setContainerPosition] =

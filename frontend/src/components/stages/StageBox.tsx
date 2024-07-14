@@ -20,7 +20,7 @@ const Stagebox: React.FC = () => {
   }
 
   return (
-    <div className="w-full min-0h-[200px] border border-neutral-500 rounded-lg p-5 flex flex-col gap-3">
+    <div className="w-full min-0h-[200px] border border-neutral-300 dark:border-neutral-700 rounded-lg p-5 flex flex-col gap-3">
       <h1 className="text-blue-400 text-2xl font-black">Hunt Them Ngg</h1>
       <h4 className="text-blue-300 font-medium jetbrains">04-15</h4>
       <p className="dark:text-white font-medium">Rewards</p>

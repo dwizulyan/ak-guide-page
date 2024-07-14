@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-import NavLinkItem from "@/components/NavLink";
+import NavLinkItem from "@/components/navbar/NavLink";
 
 const NavItems: React.FC<{
   containerPosition: string;
