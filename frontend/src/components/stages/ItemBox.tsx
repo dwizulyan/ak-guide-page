@@ -8,7 +8,7 @@ const ItemBox: React.FC<{
   const rarityColor = {
     Guaranteed: "bg-green-500",
     "Very Rare": "bg-red-500",
-    Rare: "bg-yellol-500",
+    Rare: "bg-yellow-500",
     Common: "bg-blue-500",
     "First Clear": "bg-amber-500",
   };
@@ -18,7 +18,7 @@ const ItemBox: React.FC<{
       <img src={url} alt={url} className="w-[45px]" />
       <h1
         className={twMerge(
-          "px-1 rounded-sm absolute left-0 bottom-0 text-xs w-max",
+          "px-1 rounded-sm absolute left-0 bottom-0 text-xs w-max jetbrains",
           rarityColor[rarity]
         )}
       >

@@ -4,6 +4,9 @@
 
 @layer base {
     *{
-        font-family:"JetBrains Mono";
+        font-family:"Noto Sans";
+    }
+    .jetbrains {
+        font-family: "JetBrains Mono" !important;
     }
 }

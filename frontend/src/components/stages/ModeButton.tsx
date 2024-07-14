@@ -18,10 +18,10 @@ const ModeButton: React.FC<ModeButtonType> = ({
     <button
       onClick={() => handleMode("Challange")}
       className={twMerge(
-        "px-4 py-2",
+        "px-4 py-2  font-bold",
         state === mode
           ? active
-          : "bg-neutral-200 dark:text-white dark:bg-neutral-800 rounded-lg"
+          : "font-bold bg-neutral-200 dark:text-white dark:bg-neutral-800 rounded-lg"
       )}
     >
       {mode}
