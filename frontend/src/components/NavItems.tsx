@@ -15,7 +15,7 @@ const NavItems: React.FC<{
         <FontAwesomeIcon
           onClick={() => handleNavbar()}
           icon={faBars}
-          className="text-xl dark:text-white"
+          className="text-xl text-blue-400"
         />
       </div>
       <div

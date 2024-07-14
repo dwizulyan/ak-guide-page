@@ -6,6 +6,9 @@ import "@/fonts";
 
 import App from "@/App";
 import ErrorPage from "@/components/error/ErrorPage";
+import Home from "@/routes/home/Home";
+import Stages from "@/routes/guides/stages/Stages";
+import View from "@/routes/view/View";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -16,8 +19,16 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        index: true,
+        element: <Home />,
+      },
+      {
         path: "guide/stages",
-        element: <h1>Hello World</h1>,
+        element: <Stages />,
+      },
+      {
+        path: "view",
+        element: <View />,
       },
     ],
   },
