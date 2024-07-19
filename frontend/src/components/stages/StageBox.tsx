@@ -2,18 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import ItemBox from "@/components/stages/ItemBox";
-import { Rewards } from "@/components/stages/data";
 import { TrimDescription } from "@/components/stages/functions";
 import ModeButton from "@/components/stages/ModeButton";
+import { Stage } from "./Types";
 
-const Stagebox: React.FC = () => {
+const Stagebox: React.FC<{ data: Stage }> = ({ data }) => {
   const [mode, setMode] = useState<"Normal" | "Challange">("Normal");
-  const description: string =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nesciunt nulla accusamus distinctionwithnoremorse";
-
-  const trimmedDesc = TrimDescription(description);
-
-  const currMode = Rewards.filter((reward) => reward.mode === mode);
+  const trimmedDesc = TrimDescription(data.description);
+  const currMode = data.rewards?.filter((reward) => reward.mode === mode);
 
   function handleMode(mode: "Normal" | "Challange") {
     setMode(mode);
@@ -21,8 +17,8 @@ const Stagebox: React.FC = () => {
 
   return (
     <div className="w-full min-0h-[200px] border border-neutral-300 dark:border-neutral-700 rounded-lg p-5 flex flex-col gap-3">
-      <h1 className="text-blue-400 text-2xl font-black">Hunt Them Ngg</h1>
-      <h4 className="text-blue-300 font-medium jetbrains">04-15</h4>
+      <h1 className="text-blue-400 text-2xl font-black">{data.name}</h1>
+      <h4 className="text-blue-300 font-medium jetbrains">{data.code}</h4>
       <p className="dark:text-white font-medium">Rewards</p>
       <div className="flex gap-5 items-center">
         <ModeButton
@@ -39,11 +35,18 @@ const Stagebox: React.FC = () => {
         />
       </div>
       <div className="w-full p-2 bg-neutral-100 dark:bg-neutral-800 rounded-lg flex overflow-x-scroll gap-14">
-        {currMode[0].items.map((reward) => {
-          return (
-            <ItemBox url={`/${reward.name}.webp`} rarity={reward.rarity} />
-          );
-        })}
+        {currMode ? (
+          currMode[0].items?.map((reward) => {
+            return (
+              <ItemBox
+                url={`/${reward.name.replaceAll(" ", "_")}.webp`}
+                rarity={reward.rarity}
+              />
+            );
+          })
+        ) : (
+          <h1>Nutting</h1>
+        )}
       </div>
       <p className="dark:text-neutral-300 text-sm">{trimmedDesc}</p>
       <Link to="/view" className="w-full">

@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Rewards } from "@/components/stages/data";
 import ItemBox from "@/components/stages/ItemBox";
 
 const View: React.FC = () => {

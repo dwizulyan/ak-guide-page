@@ -1,16 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import TextInput from "@/components/form/TextInput";
 import { PrimaryButton } from "@/components/common/Buttons";
 
-const SearchBox: React.FC = () => {
-  const [searchStage, setSearchStage] = useState<string>("");
-  function handleSearchStage(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearchStage(e.target.value);
-  }
+type SearchBox = {
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onClick: () => void;
+};
 
-  function handleSearchButton() {
-    console.log(searchStage);
-  }
+const SearchBox: React.FC<SearchBox> = ({ onChange, onClick }) => {
   return (
     <>
       {" "}
@@ -20,13 +17,13 @@ const SearchBox: React.FC = () => {
           name="search_stage"
           type="text"
           className="focus:outline-none"
-          onChange={handleSearchStage}
+          onChange={(e) => onChange(e)}
         />
         <PrimaryButton
           content="Search"
           onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
             e.preventDefault();
-            handleSearchButton();
+            onClick();
           }}
         />
       </form>

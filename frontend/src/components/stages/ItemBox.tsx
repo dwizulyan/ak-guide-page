@@ -3,14 +3,21 @@ import { twMerge } from "tailwind-merge";
 
 const ItemBox: React.FC<{
   url: string;
-  rarity: "Guaranteed" | "Very Rare" | "Rare" | "Common" | "First Clear";
+  rarity:
+    | "Guaranteed"
+    | "Uncommon"
+    | "Very_Rare"
+    | "Rare"
+    | "Common"
+    | "First_Clear";
 }> = ({ url, rarity }) => {
   const rarityColor = {
     Guaranteed: "bg-green-500",
-    "Very Rare": "bg-red-500",
+    Very_Rare: "bg-red-500",
+    Uncommon: "bg-slate-500",
     Rare: "bg-yellow-500",
     Common: "bg-blue-500",
-    "First Clear": "bg-amber-500",
+    First_Clear: "bg-amber-500",
   };
 
   return (
@@ -22,7 +29,7 @@ const ItemBox: React.FC<{
           rarityColor[rarity]
         )}
       >
-        {rarity}
+        {rarity.replaceAll("_", " ")}
       </h1>
     </div>
   );
