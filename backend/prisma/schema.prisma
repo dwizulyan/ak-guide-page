@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Stage { 
+  id Int @id @default(autoincrement())
+  name String
+  code String @unique
+  description String
+  rewards Reward[]
+  condition Condition[]
+}
+
+model Reward {
+  id Int @id @default(autoincrement())
+  stageCode String 
+  rewardsCode String @unique
+  stage Stage @relation(fields: [stageCode],references: [code])
+  mode Mode
+  items Item[]
+}
+
+model Item {
+  id Int @id @default(autoincrement())
+  name String
+  rewardsCode String
+  reward Reward @relation(fields: [rewardsCode],references: [rewardsCode])
+  rarity Rarity
+}
+
+model Condition {
+  id Int @id @default(autoincrement())
+  mode Mode
+  stageCode String
+  stage Stage @relation(fields: [stageCode],references: [code])
+  content String[]
+}
+
+enum Mode {
+  Normal
+  Challange
+}
+
+enum Rarity {
+  Guaranteed
+  Common
+  Uncommon
+  Rare
+  Very_Rare
+  First_Clear
+}
